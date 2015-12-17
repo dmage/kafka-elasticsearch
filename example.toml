@@ -1,0 +1,5 @@
+KafkaHTTPProxyURL = "http://localhost:8080"
+ElasticURL = "http://localhost:9200"
+ElasticIndex = "kafka"
+Topics = ["TOPIC_NAME"]
+Step = 10
