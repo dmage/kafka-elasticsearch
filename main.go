@@ -20,6 +20,7 @@ var cfg struct {
 	KafkaHTTPProxyURL string
 	ElasticURL        string
 	ElasticIndex      string
+	ElasticRetries    int
 	Topics            []string
 	Step              int64
 }
@@ -62,7 +63,7 @@ func processMessage(topic string, partition int, offset int64, message kafkahttp
 		}
 		if resp.StatusCode == 429 {
 			retryCounter++
-			if retryCounter < 3 {
+			if cfg.ElasticRetries == -1 || retryCounter < cfg.ElasticRetries {
 				time.Sleep(1*time.Second + time.Duration(rand.Intn(10000))*time.Millisecond)
 				continue
 			}

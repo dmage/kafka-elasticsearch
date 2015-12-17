@@ -1,5 +1,6 @@
 KafkaHTTPProxyURL = "http://localhost:8080"
 ElasticURL = "http://localhost:9200"
 ElasticIndex = "kafka"
+ElasticRetries = 30
 Topics = ["TOPIC_NAME"]
 Step = 10
